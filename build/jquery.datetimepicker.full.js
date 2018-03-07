@@ -1084,7 +1084,9 @@ var datetimepickerFactory = function ($) {
 				.xdsoftScroller(options)
 				.on('touchstart mousedown.xdsoft', function (event) {
 					this.touchMoved = false;
-					this.touchStartPosition = event.originalEvent.touches[0]
+					if(event instanceof TouchEvent){
+						this.touchStartPosition = event.originalEvent.touches[0]
+					}
 					event.stopPropagation();
 					event.preventDefault();
 				})
